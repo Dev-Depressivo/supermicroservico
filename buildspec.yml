@@ -27,10 +27,9 @@ phases:
       - echo Pushing the Docker images...
       - docker push $REPOSITORY_URI:latest
       - docker push $REPOSITORY_URI:$IMAGE_TAG
-      - ContainerName="supermicroservico"
+      - ContainerName="depressivodev"
       - printf '[{"name":"CONTAINER_NAME","imageUri":"%s"}]' $REPOSITORY_URI:$IMAGE_TAG > imagedefinitions.json
       - sed -i -e "s|CONTAINER_NAME|$ContainerName|g" imagedefinitions.json
-      - sed -i -e "s|IMAGE_URI|$ImageURI|g" imagedefinitions.json
       - cat imagedefinitions.json
 
 artifacts:
