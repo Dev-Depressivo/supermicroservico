@@ -6,7 +6,12 @@ phases:
       java: corretto17
   pre_build:
     commands:
-      - echo Nothing to do in the pre_build phase...
+      - echo Logging in to Amazon ECR...
+      - aws --version
+      - $(aws ecr get-login --region $AWS_DEFAULT_REGION --no-include-email)
+      - REPOSITORY_URI=319162432208.dkr.ecr.us-east-1.amazonaws.com/depressivodev-prod
+      - COMMIT_HASH=$(echo $CODEBUILD_RESOLVED_SOURCE_VERSION | cut -c 1-7)
+      - IMAGE_TAG=build-$(echo $CODEBUILD_BUILD_ID | awk -F":" '{print $2}')
   build:
     commands:
       - echo Build started on `date`
