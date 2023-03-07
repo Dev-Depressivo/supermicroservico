@@ -1,7 +1,7 @@
 {
   "containerDefinitions": [
     {
-      "name": "SuperMicroservicoServiceContainer",
+      "name": "depressivodev",
       "image": "319162432208.dkr.ecr.us-east-1.amazonaws.com/depressivodev-prod:latest",
       "memory": 128,
       "cpu": 100,
@@ -15,7 +15,7 @@
       ]
     }
   ],
-  "family": "SuperMicroservicoServiceTask",
+  "family": "SuperMicroservicoTask",
   "compatibilities": [
     "EXTERNAL",
     "EC2"
