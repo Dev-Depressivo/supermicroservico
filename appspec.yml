@@ -1,0 +1,9 @@
+version: 0.0
+Resources:
+  - TargetService:
+      Type: AWS::ECS::Service
+      Properties:
+        TaskDefinition: 319162432208.dkr.ecr.us-east-1.amazonaws.com/depressivodev-prod
+        LoadBalancerInfo:
+          ContainerName: "SuperMicroservicoServiceContainer"
+          ContainerPort: 8080
