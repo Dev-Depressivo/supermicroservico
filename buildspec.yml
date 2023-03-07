@@ -28,12 +28,13 @@ phases:
       - docker push $REPOSITORY_URI:latest
       - docker push $REPOSITORY_URI:$IMAGE_TAG
       - echo Writing image definitions file...
-      - printf '[{"name":"cicd-container","imageUri":"%s"}]' $REPOSITORY_URI:$IMAGE_TAG
       - printf '[{"name":"cicd-container","imageUri":"%s"}]' $REPOSITORY_URI:$IMAGE_TAG > imagedefinitions.json
+      - printf '[{"name":"CONTAINER_NAME","imageUri":"IMAGE_URI"}]' > imagedefinitions.json
+      - sed -i -e "s|CONTAINER_NAME|$ContainerName|g" imagedefinitions.json
+      - sed -i -e "s|IMAGE_URI|$ImageURI|g" imagedefinitions.json
       - cat imagedefinitions.json
 
 artifacts:
   files:
-    - '**/*'
     - imagedefinitions.json
   base-directory: './build/libs'
