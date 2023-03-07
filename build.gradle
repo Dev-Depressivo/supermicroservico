@@ -12,6 +12,14 @@ repositories {
 	mavenCentral()
 }
 
+jar {
+	enabled = true
+}
+
+bootJar {
+	enabled = false
+}
+
 dependencies {
 	implementation 'org.springframework.boot:spring-boot-starter-security'
 	implementation 'org.springframework.boot:spring-boot-starter-webflux'
