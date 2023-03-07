@@ -24,10 +24,11 @@ phases:
   post_build:
     commands:
       - echo Build completed on `date`
-      - printf '[{"name":"depressivodev","ImageURI":"%s"}]' $REPOSITORY_URI:$IMAGE_TAG > imagedefinitions.json
+      - ContainerName="depressivodev"
+      - printf '[{"name":"CONTAINER_NAME","ImageURI":"%s"}]' $REPOSITORY_URI:$IMAGE_TAG > imagedefinitions.json
+      - sed -i -e "s|CONTAINER_NAME|$ContainerName|g" imagedefinitions.json
       - cat imagedefinitions.json
 
 artifacts:
   files:
-    - '**/*'
     - imagedefinitions.json
